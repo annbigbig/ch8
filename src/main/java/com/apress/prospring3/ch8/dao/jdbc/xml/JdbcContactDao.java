@@ -76,6 +76,7 @@ public class JdbcContactDao implements ContactDao, InitializingBean {
 		String sql = "select last_name from contact where id = :contactId";
 		
 		SqlParameterSource namedParameters = new MapSqlParameterSource("contactId", id);
+		//也可以把上面那一行換成下面這兩行代碼，同等效力
 		//Map<String, Object> namedParameters = new HashMap<String, Object>();
 		//namedParameters.put("contactId", id);
 		return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, String.class);
@@ -111,10 +112,10 @@ public class JdbcContactDao implements ContactDao, InitializingBean {
 		contact.setId(jdbcTemplate.queryForLong("select last_insert_id()")); 
 	}
 	
+	//Inner Class，將資料庫取出的每一行Row封裝成對應的Contact物件
 	private static final class ContactMapper implements RowMapper<Contact> {
 
 		public Contact mapRow(ResultSet rs, int rowNum) throws SQLException {
-
 			Contact contact = new Contact();
 			contact.setId(rs.getLong("id"));
 			contact.setFirstName(rs.getString("first_name"));
@@ -125,6 +126,7 @@ public class JdbcContactDao implements ContactDao, InitializingBean {
 		
 	}	
 	
+	//Inner Class, 將資料庫取出的ResultSet封裝成List<Contact>物件，而每一個Contact物件如果有對應的ContactTelDetail一併封裝
 	private static final class ContactWithDetailExtractor implements ResultSetExtractor<List<Contact>> {
 
 		public List<Contact> extractData(ResultSet rs) throws SQLException,

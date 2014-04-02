@@ -36,9 +36,11 @@ public class AnnotationJdbcDaoSample {
 /*		contacts = contactDao.findAllWithDetail();	
 		listContacts(contacts);	*/	
 		
+		
 		// Find contacts by first name
 		contacts = contactDao.findByFirstName("Clarence");
 		listContacts(contacts);		
+		
 		
 		Contact contact;
 		
@@ -59,7 +61,8 @@ public class AnnotationJdbcDaoSample {
 		contact.setBirthDate(new Date((new GregorianCalendar(2001, 10, 1)).getTime().getTime()));
 		contactDao.insert(contact);
 		contacts = contactDao.findAll();	
-		listContacts(contacts);		
+		listContacts(contacts);
+		System.out.println("------------------------------generated contacd id = " + contact.getId());
 		
 		// Insert contact with details
 		contact = new Contact();
@@ -79,7 +82,6 @@ public class AnnotationJdbcDaoSample {
 		contactDao.insertWithDetail(contact);
 		contacts = contactDao.findAllWithDetail();	
 		listContacts(contacts);			
-		
 	}
 
 	private static void listContacts(List<Contact> contacts) {

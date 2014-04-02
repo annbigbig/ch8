@@ -36,7 +36,7 @@ public class PlainContactDao implements ContactDao {
 	 * @throws SQLException if the connection cannot be established
 	 */
 	private Connection getConnection() throws SQLException {
-		return DriverManager.getConnection("jdbc:mysql://localhost:3306/prospring3_ch8", "prospring3", "prospring3");
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "tony", "tony");
 	}
 	
 	/**
@@ -88,7 +88,7 @@ public class PlainContactDao implements ContactDao {
 		try {
 			connection = getConnection();
 			PreparedStatement statement = connection.prepareStatement(
-					"insert into Contact (first_name, last_name, birth_date) values (?, ?, ?)"
+					"insert into contact (first_name, last_name, birth_date) values (?, ?, ?)"
 					, Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, contact.getFirstName());
 			statement.setString(2, contact.getLastName());

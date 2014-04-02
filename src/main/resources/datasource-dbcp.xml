@@ -6,6 +6,11 @@
       http://www.springframework.org/schema/context 
       http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
+	<!-- Tomcat官網告訴你了，不要使用dbcp連接池，你該使用Tomcat7自帶的連接池，原因自已看官網這一頁-->
+	<!-- https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html -->
+	<!-- 從這一句給我看下去
+		The JDBC Connection Pool org.apache.tomcat.jdbc.pool 
+		is a replacement or an alternative to the Apache Commons DBCP connection pool. -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
         destroy-method="close">
         <property name="driverClassName">

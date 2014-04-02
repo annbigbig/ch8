@@ -1,6 +1,6 @@
 DELIMITER //
 CREATE FUNCTION getFirstNameById(in_id INT)
-    RETURNS VARCHAR(60)
+    RETURNS VARCHAR(60) READS SQL DATA
 BEGIN
     RETURN (SELECT first_name FROM contact WHERE id = in_id);
 END //

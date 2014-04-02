@@ -53,6 +53,7 @@ public class JdbcContactDaoSample {
 				}
 			}
 			System.out.println();
-		}		
+		}
+		
 	}
 }
