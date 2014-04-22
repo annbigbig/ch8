@@ -11,6 +11,7 @@
 
     <context:component-scan base-package="com.apress.prospring3.ch8.dao.jdbc.annotation"/>
 
+	<!-- Inform Spring to scan the annotation within codes for DI requirements -->
     <context:annotation-config/>
 
     <jdbc:embedded-database id="dataSource" type="H2">
